@@ -1,0 +1,152 @@
+
+.prueba {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 42px;
+}
+.AllForm {
+    width: 500px;
+    height: 750px;
+    margin-top: 30px;
+    border: 2px solid #6504b5;
+    border-radius: 10px;
+    background-image:  url("../imagenes/prueba2.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: opacity(80%); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.AllForm h1 {
+    margin-top: 10px;
+    text-align: center;
+    color:  white;
+    margin-bottom: 5px;
+}
+
+.Form {
+    padding: 0px 30px 0px 30px;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.temps {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    gap: 2px;
+    flex-wrap: wrap;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.spanE {
+    margin-top: -18px;
+    margin-bottom: 17px;;
+    height: 20px;
+}
+
+.Form input {
+    margin: 5px;
+    padding: 2px;
+    /* border: 2px solid #6504b5; */
+    width: 280px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: hsl(273, 96%, 36%);
+    color: white;
+    transition: .3s ease;
+    cursor: pointer;
+    text-align: left;
+}
+
+.Form input::placeholder {
+    color: white;
+   }
+   
+.Form input:focus, input:hover {
+    outline: none;
+    border-color: #6504b5;
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+
+.error {
+    font-size: 14px;
+    color: white;
+    width: 100%;
+    font-weight: lighter;
+    height: 20px;
+    background-color: red;
+    border-radius: 3px;
+}
+
+.buttonCreate {
+    cursor: pointer;
+    color: white;
+    font-weight: bolder;
+    background-color: #6504b5;
+    border-radius: 70px;
+    font-size: 12px;
+    padding: 10px 30px 10px 30px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.elements {
+    margin-top: 10px;
+    background-color:#6504b5 ;
+    height: 40px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    color: white;
+    transition: .3s ease;
+    cursor: pointer
+}
+
+.elements:focus, .elements:hover {
+    outline: none;
+    background-color: red;
+    box-shadow: 0 0 0 40px rgba(250, 2, 2, 0.5);
+   }
+
+
+.info select {
+    margin: 5px;
+    padding: 0px 50px;
+    width: 100%;
+    height: 20px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: hsl(273, 96%, 36%);
+    color: white;
+    transition: .3s ease;
+    cursor: pointer;
+  }
+
+
+

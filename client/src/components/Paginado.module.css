@@ -1,0 +1,30 @@
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.numbers {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+  }
+  
+  .numbers div {
+    color: black;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #560bad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .numbers div:hover {
+    background-color: #560bad;
+    color: white;
+  }
+
+  

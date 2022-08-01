@@ -1,0 +1,11 @@
+.LandingPage {
+    background-image: url("../imagenes/waritos.jpg");
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    position:absolute;
+}
+
+.LandingPage h1 {
+    color: white;
+}

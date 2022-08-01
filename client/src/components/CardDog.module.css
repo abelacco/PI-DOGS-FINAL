@@ -1,0 +1,55 @@
+.CardDog {
+    width: 450px;
+    height: 500px;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.allCaracteristicas{
+    border: 1px solid #560bad;
+    border-radius: 10px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.CardDog img {
+    width: 450px; 
+    height: 250px;
+    border-radius: 10px 10px 0px 0px;
+    
+}
+
+
+
+.CardDog h3 {
+    width: 280px;
+    height: 40px;
+    background-color: #560bad;
+    border-radius: 10px;
+    color: beige;
+    text-align: center;
+    
+}
+
+.caracteristicas {
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    /* background-color: aqua; */
+   
+}
+
+.temperaments {
+    width: 450px;
+    height: 40px;
+    margin-bottom: 5px;
+    /* background-color: yellow; */
+}

@@ -1,0 +1,21 @@
+.headerContainer {
+    background-color: #efeef1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+}
+
+
+.create {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap:10px
+}
+
+.link {
+  text-decoration: none;
+  color:  #6504b5;
+}
