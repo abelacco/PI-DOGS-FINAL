@@ -1,5 +1,5 @@
 import React , {useEffect,useState} from 'react'
-import {Link , useHistory} from "react-router-dom"
+import { useHistory} from "react-router-dom"
 import {getTemps, createDog} from "../actions/index"
 import { useDispatch,useSelector } from 'react-redux'
 import Header from './Header'
@@ -14,21 +14,32 @@ import styles from "./CreateDog.module.css"
   }
   if (!input.weight_min) {
     errors.weight_min ="weight min required"
+  } else if(input.weight_min <= 0 || input.weight_min > 100){
+    errors.weight_min = "weight has to be between 1 to 100"
   }
   if (!input.weight_max) {
     errors.weight_max ="weight max required"
-  } else if (input.weight_max < input.weight_min){
+  } else if (input.weight_max <= input.weight_min){
     errors.weight_max ="weight max has to be  mayor than weight min"
+  } else if(input.weight_max < 10 || input.weight_max > 100){
+    errors.weight_max = "weight has to be between 10 to 100"
   }
   if (!input.height_min) {
     errors.height_min ="height min required"
+  } else if(input.height_min <= 0 || input.height_min > 50){
+    errors.height_min = "height has to be between 1 to 50"
   }
+
   if (!input.height_max) {
     errors.height_max ="height max required"
-  } else if (input.height_max < input.height_min){
+  } else if (input.height_max <= input.height_min){
     errors.height_max ="height max has to be  mayor than height min"
+  } else if(input.height_max < 50 || input.height_max > 100){
+    errors.height_max = "height has to be between 50 to 100"
   }
-  if (input.image && !/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(input.image)){
+
+
+  if (input.image && !/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!]))?/.test(input.image)){
     errors.image ="is not URL"
   }
   // if (input.temperaments.length === 0) {
@@ -93,19 +104,20 @@ export default function CreateDog() {
   const handleSubmit = (e) => {         // parra enviar el formulario y crear el perro
     e.preventDefault()
     console.log(input)
-    if(input.temperaments.length === 0) return alert("Select at least 1 one temperament")
     if(!input.name || !input.weight_min || !input.weight_max || !input.height_min || !input.height_max) return alert(" Breed , weight(min-max) and height(min-max are required ")
+    if(input.temperaments.length === 0) {return alert("Select at least 1 temperament")}
+    else if (input.temperaments.length > 4) {return alert("Max 4 temperaments")}
     dispatch(createDog(input))          // accion para crear el perro
     alert("Dog created!!")
-    setInput({
-      name:"",
-      weight_min:"",
-      weight_max:"",
-      height_min:"",
-      height_max:"",
-      life_span:"",
-      image:"",
-      temperaments: []
+      setInput({
+        name:"",
+        weight_min:"",
+        weight_max:"",
+        height_min:"",
+        height_max:"",
+        life_span:"",
+        image:"",
+        temperaments: []
     })
     history.push("/home")               // una vez creado el perro nos redirige al home
   }
@@ -121,27 +133,27 @@ export default function CreateDog() {
           {/* // donde se recibe la info , label es la etiqueta e input el espacio donde se escribe la info */}
             <label>Breed</label>
             <input  type="text" value={input.name} name="name" onChange={handleChange} placeholder="Breed"/>  
-            <p className={styles.spanE}>{errors.name && (<p className={styles.error}>{errors.name}</p>)}</p>
+            <span className={styles.spanE}>{errors.name && (<p className={styles.error}>{errors.name}</p>)}</span>
           </div>
           <div className={styles.info}>
             <label>Weight min</label>
             <input type="number" value={input.weight_min} name= "weight_min" onChange={handleChange} placeholder="weight min - kg"/>
-            <p className={styles.spanE}>{errors.weight_min && (<p className={styles.error}>{errors.weight_min}</p>)}</p>
+            <span className={styles.spanE}>{errors.weight_min && (<p className={styles.error}>{errors.weight_min}</p>)}</span>
           </div>
           <div className={styles.info}>
             <label>Weight max</label>
             <input type="number" value={input.weight_max} name= "weight_max" onChange={handleChange} placeholder="weight max - kg"/>
-            <p className={styles.spanE}>{errors.weight_max && (<p className={styles.error}>{errors.weight_max}</p>)}</p>
+            <span className={styles.spanE}>{errors.weight_max && (<p className={styles.error}>{errors.weight_max}</p>)}</span>
           </div>
           <div className={styles.info}>
             <label>Height min</label>
             <input type="number" value={input.height_min} name= "height_min" onChange={handleChange} placeholder="height min - cm"/>
-            <p className={styles.spanE}>{errors.height_min && (<p className={styles.error}>{errors.height_min}</p>)}</p>
+            <span className={styles.spanE}>{errors.height_min && (<p className={styles.error}>{errors.height_min}</p>)}</span>
           </div>
           <div className={styles.info}>
             <label>Height max</label>
             <input type="number" value={input.height_max} name= "height_max" onChange={handleChange} placeholder="height max - cm"/>
-            <p className={styles.spanE}>{errors.height_max && (<p className={styles.error}>{errors.height_max}</p>)}</p>
+            <span className={styles.spanE}>{errors.height_max && (<p className={styles.error}>{errors.height_max}</p>)}</span>
           </div>
           <div className={styles.info}>
             <label>Life span</label>
@@ -150,7 +162,7 @@ export default function CreateDog() {
           <div className={styles.info}>
             <label>Image:</label>
             <input type="url" value={input.image} name= "image" onChange={handleChange} placeholder="URL image" />
-            <p className={styles.spanE}>{errors.image && (<p className={styles.error}>{errors.image}</p>)}</p>
+            <span className={styles.spanE}>{errors.image && (<p className={styles.error}>{errors.image}</p>)}</span>
           </div>
           <div className={styles.info}>
             <label >Temperaments:</label>

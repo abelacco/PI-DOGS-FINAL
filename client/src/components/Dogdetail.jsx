@@ -34,7 +34,7 @@ export default function Dogdetail(props) {
           {
             dogDetail.length > 0 
             ?<div className={styles.abox}>
-                <img className={styles.imagen} src={dogDetail[0].image}  />
+                <img className={styles.imagen} alt="loading" src={dogDetail[0].image}  />
                 <div className={styles.textcontainer}>
                     <h1> {dogDetail[0].name}</h1>
                     <div>

@@ -15,7 +15,8 @@ router.get("/", async (req,res,next) =>{
    try {
           const allDoggies = await allDogsDbApi();
           if(name) {
-               let dogName = await allDoggies.filter(d => d.name.toLowerCase() === name.toLowerCase())
+              //  let dogName = await allDoggies.filter(d => d.name.toLowerCase() === name.toLowerCase())
+              let dogName = await allDoggies.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))
                dogName.length?
                res.status(200).send(dogName) :
                res.send("Dog didn't find")

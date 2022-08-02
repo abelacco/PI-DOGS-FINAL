@@ -13,6 +13,7 @@ const Searchbar = () => {
   const handleInputChange = (e) => {
     e.preventDefault()
     setSearch(e.target.value)
+    dispatch(searchByName(search))
     console.log(search)
     
   }

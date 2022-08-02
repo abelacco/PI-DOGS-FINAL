@@ -7,9 +7,15 @@ const { Dog, conn } = require('../../src/db.js');
 const agent = session(app);
 const dog = {
   name: 'Pug',
+  height_min: 50,
+  height_max: 100,
+  weight_min: 50,
+  weight_max: 100,
+  life_span: "15 years",
+  temperaments: ["Gay"]
 };
 
-describe('Videogame routes', () => {
+describe('Dog routes', () => {
   before(() => conn.authenticate()
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
@@ -22,3 +28,21 @@ describe('Videogame routes', () => {
     );
   });
 });
+
+
+describe('POST /dogs', () => {
+  it('POST agrega un nueva raza', (done) => {
+    agent.post('/dogs')
+    .send({
+    name : "jhandir",
+    height_min: 50,
+    height_max: 100,
+    weight_min: 50,
+    weight_max: 100,
+    life_span: "15 years",
+    temperaments: ["Gay"]
+    })
+    .expect(200);
+    done();
+  }).timeout(3000);
+})

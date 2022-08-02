@@ -51,7 +51,7 @@ const rootReducer = (state = initialState, action) => {
                 dogs: ascDesName
             }
         case ORDER_BY_WEIGHT:
-            const allDogsW = state.allDogs.filter( d => d.weight_min)
+            const allDogsW = state.dogs.filter( d => d.weight_min)
             const orderWeight = action.payload === 'min'
             ?  allDogsW.sort((a , b) =>{
                 return a.weight_min - b.weight_min

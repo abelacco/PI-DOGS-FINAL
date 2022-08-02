@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <div className={styles.FooterContainer}> 
-        <Link  to="/"><img width="40px" height="40px" src={iconLove1}/></Link>
+        <Link  to="/"><img alt="loading" width="40px" height="40px" src={iconLove1}/></Link>
         <Link to="/home" className={styles.link}><h2>Created by abelacco</h2></Link> 
-        <Link  to="/"><img width="40px" height="40px" src={iconLove2}/></Link>    
+        <Link  to="/"><img alt="loading" width="40px" height="40px" src={iconLove2}/></Link>    
     </div>
   )
 }

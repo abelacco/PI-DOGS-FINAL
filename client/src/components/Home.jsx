@@ -2,7 +2,6 @@ import React from 'react'
 import { useEffect, useState} from 'react';
 import {useDispatch , useSelector} from "react-redux";
 import {filterTemps, getDogs, getTemps , filterByOrigin, orderByAscDesc, orderByWeight} from "../actions/index"
-import { Link } from 'react-router-dom';
 import Paginado from './Paginado';
 import CardDog from './CardDog';
 import Searchbar from './Searchbar';
@@ -19,7 +18,6 @@ export default function Home() {
   const allDogs = useSelector((state) => state.dogs)
   const allTemps = useSelector((state) => state.temps)
   const [order, setOrder] = useState("")
-  const [loading, setLoading] = useState(false)
 
 
   // Paginado 
@@ -34,9 +32,7 @@ export default function Home() {
   }
   
   useEffect(() => {
-    setLoading(true)
     dispatch(getDogs())
-    setLoading(false)
     dispatch(getTemps())
    
   },[dispatch])
@@ -125,6 +121,7 @@ export default function Home() {
           dogPerPage={dogPerPage}
           allDogs={allDogs.length}
           paginado={paginado}
+          currentPage={currentPage}
           />
         <div className={styles.cardDogs}>
           {

@@ -5,7 +5,7 @@ import gif from "../imagenes/giphy.gif"
 export const Loader = () => {
   return (
     <div>
-        <img className={styles.imagen} src={gif} />
+        <img className={styles.imagen} src={gif} alt="loading" />
     </div>
   )
 }
