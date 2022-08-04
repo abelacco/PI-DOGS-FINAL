@@ -8,8 +8,22 @@
     flex-direction: row;
     gap: 3px;
   }
+
+  .numbers button {
+    color: white;
+    background-color: #560bad;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #560bad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
   
-  .numbers div {
+  /* .numbers div {
     color: black;
     width: 40px;
     height: 40px;
@@ -25,6 +39,33 @@
   .numbers div:hover {
     background-color: #560bad;
     color: white;
+  } */
+
+  .active {
+    color: white;
+    background-color: #560bad;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #560bad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
   }
 
+  .noActive {
+    color: #560bad;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #560bad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
   

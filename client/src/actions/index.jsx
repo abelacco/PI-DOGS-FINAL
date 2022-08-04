@@ -9,25 +9,36 @@ export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const CREATE_DOG = "CREATE_DOG";
 export const GET_DOG_DETAIL = "GET_DOG_DETAIL"
 
+
 export function getDogs() {
-    return function(dispatch) {
-        return fetch("http://localhost:3001/dogs")
-          .then(response => response.json())
-          .then(dogs => {
-            dispatch({ type: GET_ALL_DOGS, payload: dogs });
-          });
-      };
+  return async function(dispatch){
+    try {
+        var json = await axios.get("/dogs");
+        return dispatch({
+          type: GET_ALL_DOGS,
+          payload: json.data
+        })
+    }
+    catch(error) {
+      console.log(error)
+    }
+  }
 }
 
 
+
 export function getTemps() {
-  return function(dispatch) {
-      return fetch("http://localhost:3001/temperaments")
-        .then(response => response.json())
-        .then(temps => {
-          dispatch({ type: GET_ALL_TEMPS, payload: temps });
-        });
-    };
+  return async function(dispatch){
+    try {
+      var json = await axios.get("/temperaments")
+      return dispatch ({
+        type: GET_ALL_TEMPS, payload: json.data
+      })
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
 }
 
 export function filterTemps(temp) {                 
@@ -62,7 +73,7 @@ export function orderByWeight(weight){
 export function searchByName (name) {
   return async function(dispatch){
     try {
-        var json = await axios.get("http://localhost:3001/dogs?name=" + name);
+        var json = await axios.get("/dogs?name=" + name);
         console.log(json.data)
         return dispatch({
           type: SEARCH_BY_NAME,
@@ -78,7 +89,7 @@ export function searchByName (name) {
 export function createDog(payload) {
   return async function(dispatch){
     try {
-        var response = await axios.post("http://localhost:3001/dogs", payload);
+        var response = await axios.post("/dogs", payload);
         console.log(response)
         return response
          
@@ -92,7 +103,7 @@ export function createDog(payload) {
 export function getDogByID (id) {
   return async function(dispatch){
     try {
-        var json = await axios.get("http://localhost:3001/dogs/" + id);
+        var json = await axios.get("/dogs/" + id);
         console.log(json.data)
         return dispatch({
           type: GET_DOG_DETAIL,

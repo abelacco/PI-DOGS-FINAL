@@ -17,7 +17,7 @@ export default function Paginado({dogPerPage, allDogs , paginado, currentPage}) 
           {pageNumbers && pageNumbers.map( number =>
             {
               return(
-            <div key={number} onClick={() => paginado(number)}>
+            <div key={number} onClick={() => paginado(number) } className={ currentPage === number ?styles.active : styles.noActive}>
               {number}         
             </div>
             )})

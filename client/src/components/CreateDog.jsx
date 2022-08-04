@@ -14,7 +14,10 @@ import styles from "./CreateDog.module.css"
   }
   if (!input.weight_min) {
     errors.weight_min ="weight min required"
-  } else if(input.weight_min <= 0 || input.weight_min > 100){
+  } else if(input.weight_min && !/^\d+$/.test(input.weight_min)){
+    errors.weight_min = "prueba"
+  }
+   else if(input.weight_min <= 0 || input.weight_min > 100){
     errors.weight_min = "weight has to be between 1 to 100"
   }
   if (!input.weight_max) {
@@ -53,6 +56,7 @@ export default function CreateDog() {
   const dispatch = useDispatch()
   const history = useHistory()
   const temperaments = useSelector((state) => state.temps)
+  const allDogs = useSelector((state) => state.dogs)
 
   const [errors, setErrors] = useState({})
   const [input,setInput] = useState({
@@ -103,7 +107,7 @@ export default function CreateDog() {
 
   const handleSubmit = (e) => {         // parra enviar el formulario y crear el perro
     e.preventDefault()
-    console.log(input)
+    if(allDogs.filter(d => d.name.toLowerCase() === input.name.toLowerCase())) return alert("Breed is already used.")
     if(!input.name || !input.weight_min || !input.weight_max || !input.height_min || !input.height_max) return alert(" Breed , weight(min-max) and height(min-max are required ")
     if(input.temperaments.length === 0) {return alert("Select at least 1 temperament")}
     else if (input.temperaments.length > 4) {return alert("Max 4 temperaments")}
@@ -137,7 +141,7 @@ export default function CreateDog() {
           </div>
           <div className={styles.info}>
             <label>Weight min</label>
-            <input type="number" value={input.weight_min} name= "weight_min" onChange={handleChange} placeholder="weight min - kg"/>
+            <input type="text" value={input.weight_min} name= "weight_min" onChange={handleChange} placeholder="weight min - kg"/>
             <span className={styles.spanE}>{errors.weight_min && (<p className={styles.error}>{errors.weight_min}</p>)}</span>
           </div>
           <div className={styles.info}>

@@ -17,6 +17,7 @@ export default function Home() {
   const dispatch = useDispatch()
   const allDogs = useSelector((state) => state.dogs)
   const allTemps = useSelector((state) => state.temps)
+  const dogDetail = useSelector((state) => state.dogDetail)
   const [order, setOrder] = useState("")
 
 
@@ -32,12 +33,21 @@ export default function Home() {
   }
   
   useEffect(() => {
-    dispatch(getDogs())
-    dispatch(getTemps())
-   
+    if(dogDetail.length === 0) {
+      dispatch(getDogs())
+      dispatch(getTemps()) 
+    } else {
+      handleDelete()
+      dispatch(getDogs())
+      dispatch(getTemps()) 
+    }
   },[dispatch])
 
 
+  const handleDelete = (e) => {
+    if(dogDetail)
+    dogDetail.pop()
+  }
 
   const handleClick = (e)=> {
     e.preventDefault()

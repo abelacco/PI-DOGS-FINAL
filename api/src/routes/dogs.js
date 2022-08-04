@@ -35,7 +35,7 @@ router.get("/:idRaza", async (req,res,next) =>{
             const allDoggies = await allDogsDbApi();
             if(idRaza) {
                  let dogRaza = await allDoggies.filter(d => String(d.id) === String(idRaza))
-                 console.log(dogRaza)
+              //    console.log(dogRaza)
                  dogRaza.length?
                  res.status(200).send(dogRaza) :
                  res.status(400).send("Dog didn't find")
@@ -52,7 +52,7 @@ router.get("/:idRaza", async (req,res,next) =>{
 router.post("/", async (req,res,next) => {
     const {name,height_min,height_max,weight_min,weight_max,life_span, temperaments, image } = req.body
     if( !name || !height_min || !height_max || !weight_min || !weight_max || !life_span || !temperaments) return res.status(404).send("Falta enviar datos obligatorios")
-    console.log(image)
+//     console.log(image)
     try {
         const newDog = await Dog.create({name,weight_min,weight_max,height_min,height_max,life_span,image:image || "https://cutt.ly/7Zh6L95"})
         const tempsDB = await Temperament.findAll({
@@ -66,5 +66,29 @@ router.post("/", async (req,res,next) => {
     }
 })
 
+router.put("/:idRaza", async (req,res) => {
+       let {idRaza} = req.params;
+       let {name , height_min ,height_max, weight_min, weight_max, life_span, temperaments, image } = req.body;
+       try {
+           let dog = await Dog.findByPk(idRaza)
+           let data = await dog.update({name , height_min ,height_max, weight_min, weight_max, life_span, temperaments: name = temperaments, image})
+           res.send("Breed updated")
+       }
+       catch(e) {
+           res.status(404).send(e)
+       }
+   })
+
+router.delete("/:idRaza") , async (req,res)  => {
+       let {idRaza} = req.params;
+       try {
+               await Dog.destroy({
+                     where: {idRaza}
+              })
+       }
+       catch (e) {
+              res.status(404).send(e)
+       }  
+}
 
 

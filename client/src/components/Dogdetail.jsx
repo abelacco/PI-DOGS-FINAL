@@ -18,7 +18,7 @@ export default function Dogdetail(props) {
   
   useEffect(() => {
     dispatch(getDogByID(id))
-  },[dispatch])
+  },[dispatch,id])
 
   const handleDelete = (e) => {
     dogDetail.pop()
