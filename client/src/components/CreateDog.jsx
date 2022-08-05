@@ -1,6 +1,6 @@
 import React , {useEffect,useState} from 'react'
 import { useHistory} from "react-router-dom"
-import {getTemps, createDog} from "../actions/index"
+import {getTemps, createDog ,getDogs} from "../actions/index"
 import { useDispatch,useSelector } from 'react-redux'
 import Header from './Header'
 import styles from "./CreateDog.module.css"
@@ -73,6 +73,7 @@ export default function CreateDog() {
 
   
   useEffect(() => {
+    dispatch(getDogs())
     dispatch(getTemps())
   },[dispatch])
   
@@ -106,8 +107,14 @@ export default function CreateDog() {
   }
 
   const handleSubmit = (e) => {         // parra enviar el formulario y crear el perro
-    e.preventDefault()
-    if(allDogs.filter(d => d.name.toLowerCase() === input.name.toLowerCase())) return alert("Breed is already used.")
+    
+    const filtro = allDogs.filter(d => d.name.toLowerCase() === input.name.toLowerCase())
+    if(filtro.length) {
+      e.preventDefault()
+      return alert("Breed is already used.")
+    } 
+    else {
+      
     if(!input.name || !input.weight_min || !input.weight_max || !input.height_min || !input.height_max) return alert(" Breed , weight(min-max) and height(min-max are required ")
     if(input.temperaments.length === 0) {return alert("Select at least 1 temperament")}
     else if (input.temperaments.length > 4) {return alert("Max 4 temperaments")}
@@ -124,6 +131,8 @@ export default function CreateDog() {
         temperaments: []
     })
     history.push("/home")               // una vez creado el perro nos redirige al home
+    }
+    
   }
 
   return (

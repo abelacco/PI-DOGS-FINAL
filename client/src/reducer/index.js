@@ -1,4 +1,4 @@
-import { ORDER_BY_ASCDESC, FILTER_BY_ORIGIN, FILTER_BY_TEMP, GET_ALL_DOGS, GET_ALL_TEMPS, ORDER_BY_WEIGHT, SEARCH_BY_NAME, CREATE_DOG , GET_DOG_DETAIL } from "../actions";
+import { ORDER_BY_ASCDESC, FILTER_BY_ORIGIN, FILTER_BY_TEMP, GET_ALL_DOGS, GET_ALL_TEMPS, ORDER_BY_WEIGHT, SEARCH_BY_NAME, CREATE_DOG , GET_DOG_DETAIL , GET_TOP5} from "../actions";
 
 const initialState = {
     dogs: [] ,
@@ -88,9 +88,8 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 dogDetail: action.payload
             }
-
-        default: 
-            return state; 
+        default:
+            return state    
     }
 
 }

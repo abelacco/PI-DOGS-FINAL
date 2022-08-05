@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState} from 'react';
 import {useDispatch , useSelector} from "react-redux";
-import {filterTemps, getDogs, getTemps , filterByOrigin, orderByAscDesc, orderByWeight} from "../actions/index"
+import {filterTemps, getDogs, getTemps , filterByOrigin, orderByAscDesc, orderByWeight , top5} from "../actions/index"
 import Paginado from './Paginado';
 import CardDog from './CardDog';
 import Searchbar from './Searchbar';
@@ -32,15 +32,14 @@ export default function Home() {
     setCurrentPage(pageNumber)                // es la que permitirá los cambios por página
   }
   
+
   useEffect(() => {
-    if(dogDetail.length === 0) {
-      dispatch(getDogs())
-      dispatch(getTemps()) 
-    } else {
+    if(dogDetail.length !== 0) {
       handleDelete()
-      dispatch(getDogs())
-      dispatch(getTemps()) 
     }
+    dispatch(getDogs())
+    dispatch(getTemps()) 
+  
   },[dispatch])
 
 
@@ -80,6 +79,7 @@ export default function Home() {
       setCurrentPage(1)
       setOrder(`Ordenado ${e.target.value}`) 
     }
+
 
   return (
     <div className={styles.homeContainer}>

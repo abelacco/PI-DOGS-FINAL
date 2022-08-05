@@ -8,6 +8,7 @@ export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const CREATE_DOG = "CREATE_DOG";
 export const GET_DOG_DETAIL = "GET_DOG_DETAIL"
+export const GET_TOP5 = "GET_TOP5 ";
 
 
 export function getDogs() {
@@ -116,3 +117,6 @@ export function getDogByID (id) {
     }
   }
 }
+
+
+
