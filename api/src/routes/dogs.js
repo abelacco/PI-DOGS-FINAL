@@ -29,6 +29,7 @@ router.get("/", async (req,res,next) =>{
    }
 })
 
+
 router.get("/:idRaza", async (req,res,next) =>{
      let { idRaza } = req.params 
      try {
@@ -66,29 +67,7 @@ router.post("/", async (req,res,next) => {
     }
 })
 
-router.put("/:idRaza", async (req,res) => {
-       let {idRaza} = req.params;
-       let {name , height_min ,height_max, weight_min, weight_max, life_span, temperaments, image } = req.body;
-       try {
-           let dog = await Dog.findByPk(idRaza)
-           let data = await dog.update({name , height_min ,height_max, weight_min, weight_max, life_span, temperaments: name = temperaments, image})
-           res.send("Breed updated")
-       }
-       catch(e) {
-           res.status(404).send(e)
-       }
-   })
 
-router.delete("/:idRaza") , async (req,res)  => {
-       let {idRaza} = req.params;
-       try {
-               await Dog.destroy({
-                     where: {idRaza}
-              })
-       }
-       catch (e) {
-              res.status(404).send(e)
-       }  
-}
+
 
 

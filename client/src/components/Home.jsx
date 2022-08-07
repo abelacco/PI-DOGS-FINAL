@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState} from 'react';
 import {useDispatch , useSelector} from "react-redux";
-import {filterTemps, getDogs, getTemps , filterByOrigin, orderByAscDesc, orderByWeight , top5} from "../actions/index"
+import {filterTemps, getDogs, getTemps , filterByOrigin, orderByAscDesc, orderByWeight} from "../actions/index"
 import Paginado from './Paginado';
 import CardDog from './CardDog';
 import Searchbar from './Searchbar';
@@ -18,12 +18,12 @@ export default function Home() {
   const allDogs = useSelector((state) => state.dogs)
   const allTemps = useSelector((state) => state.temps)
   const dogDetail = useSelector((state) => state.dogDetail)
-  const [order, setOrder] = useState("")
+  const [/*order*/, setOrder] = useState("")
 
 
   // Paginado 
   const [currentPage , setCurrentPage] = useState(1)  // pagina actual , empezamos por la 1, cambiará según vayan llamando
-  const [dogPerPage , setdogPerPage] = useState(8) // número de dogs por página que queremos
+  const [dogPerPage , /*setdogPerPage*/] = useState(8) // número de dogs por página que queremos
   const indexOfLastDog = currentPage * dogPerPage // Calcular el indice de inicio ,
   const indexOfFirstDog = indexOfLastDog - dogPerPage // Calcular el indice de final , estos 2 indices servirán para hacer el corte por página y renderize los que estan entre los 2 índices 
   const currentDog = allDogs.slice(indexOfFirstDog,indexOfLastDog) // serían los perros que se van a renderizar según los índices
@@ -88,7 +88,7 @@ export default function Home() {
         <div className={styles.mainContainer}>
             <h2>Find Your Perfect Dog Breed</h2>
             <div className={styles.SyR}>
-            <Searchbar />
+            <Searchbar setCurrentPage={setCurrentPage}/>
             <button className={styles.buttonR} onClick={e => {handleClick(e)}}>Refresh </button>
            </div>
            <div  className={styles.filterContainer}>

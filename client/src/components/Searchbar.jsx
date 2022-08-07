@@ -1,30 +1,28 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {searchByName} from  "../actions/index"
+import {searchByName } from  "../actions/index"
 import styles from './SearchBar.module.css'
 
+
 // {setOrder,setCurrentPage}
-const Searchbar = () => {             
+const Searchbar = ({setCurrentPage}) => {             
   const dispatch = useDispatch()
   const [search , setSearch] = useState("")
+
   
 
   const handleInputChange = (e) => {
     e.preventDefault()
     setSearch(e.target.value)
-    dispatch(searchByName(search))
-    console.log(search)
-    
+    setCurrentPage(1) 
   }
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("probando")
     dispatch(searchByName(search))
     setSearch("")
-    // setCurrentPage(1)
-    // setOrder(`Order ${e.target.value}`)
+    setCurrentPage(1)
   }
   return (
     <div className={styles.containerPrincipal}>
