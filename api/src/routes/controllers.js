@@ -50,13 +50,18 @@ const dogsApi = async () => {
 
 
 const allDogsDbApi = async () => {
-    const p1 = await dogsDb()
+    try {const p1 = await dogsDb()
     const p2 = await dogsApi()
     const alldogsconcat =  p2.concat(p1);
     return alldogsconcat;
+    }
+    catch (error) {
+        return error
+    }
 }
 
 const getTemperaments = async () => {
+try {
 const allDogsApi = await dogsApi()  // aqui traigo todos los perros
 const alltemperaments = allDogsApi.map( d => d.temperaments) // aqui hago el mapeo de temperamentos
 // console.log(alltemperaments)
@@ -69,6 +74,11 @@ setTemps.forEach( t => {      // ingresar cada temperamento a la DB
         where: {name : t}
     })           
 });
+}
+catch (error) {
+    return error
+}
+
 }
 
 
