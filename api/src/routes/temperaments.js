@@ -3,7 +3,7 @@ const router = Router();
 const {Temperament} = require('../db');
 const axios = require("axios");
 // const fetch = require('node-fetch');
-const {dogsApi} = require("./controllers");
+const {dogsApi} = require("./Controllers");
 
 module.exports = router;
 

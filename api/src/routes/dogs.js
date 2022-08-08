@@ -4,7 +4,7 @@ const { API_KEY} = process.env;
 const axios = require("axios");
 const {Dog , Temperament} = require("../db")
 // const fetch = require('node-fetch');
-const {allDogsDbApi} = require("./controllers");
+const {allDogsDbApi} = require("./Controllers");
 
 
 
