@@ -19,7 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {getTemperaments} = require("../api/src/routes/Controllers")
+const {getTemperaments} = require("../api/src/routes/controllers")
 
 const getTemps = getTemperaments();
 
