@@ -1,4 +1,5 @@
 
+  
   .all {
     display: flex;
     flex-direction: column;
@@ -12,7 +13,8 @@
     align-items: center;
     padding-top: 50px;
     gap: 120px;
-    background-color: rgb(86, 11, 173); ;
+    background-color: rgb(86, 11, 173);
+    padding-right: 50px;
   }
 
   .abox {
@@ -41,8 +43,8 @@
     background: #fff;
     line-height: 19px;
     font-size: 14px;
-    width: 400px;
-    height: 200px;
+    width: 80%;
+    height: 220px;
   }
   
   .textcontainer h1 {
@@ -52,4 +54,11 @@
 
   .imagenHouse {
     padding-top: 60px;
+  }
+
+  @media screen and (max-width: 450px) {
+    .textcontainer {
+      width: 90%;
+      height: 220px;
+    }
   }

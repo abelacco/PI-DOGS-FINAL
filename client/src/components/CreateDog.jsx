@@ -88,7 +88,7 @@ export default function CreateDog() {
       ...input,
       [e.target.name] : e.target.value    //como son varios se captura la propiedad con name y se le pasa el valor del value del form, ahi envia esa invoracion al objeto input
     }))
-    console.log(input)
+    // console.log(input)
   }
 
   const handleSelect = (e) => {         //cada vez que presiono una option se agrega al temperamentos de input, tener en cuenta no pisar los anteriores realizar un spreed operator

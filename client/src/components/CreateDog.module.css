@@ -1,4 +1,3 @@
-
 .prueba {
     display: flex;
     flex-direction: column;
@@ -148,5 +147,15 @@
     cursor: pointer;
   }
 
+  @media screen and (max-width: 450px) {
+    .AllForm {
+      width: 90%;
+    }
+    .prueba {
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;    }
+
+  }
 
 

@@ -25,6 +25,10 @@
     
 }
 
+.link {
+    text-decoration: none;
+}
+
 
 
 .CardDog h3 {
@@ -53,3 +57,26 @@
     margin-bottom: 5px;
     /* background-color: yellow; */
 }
+
+@media screen and (max-width: 450px) {
+    .temperaments {
+      display: none
+    }
+    .caracteristicas {
+        display: none
+      }
+    .allCaracteristicas {
+        width: 300px;
+    }
+    .CardDog img {
+        width: 100%;
+    }
+    .CardDog {
+        margin-bottom: -150px;
+    }
+    .CardDog h3 {
+        width: 90%
+        
+    }
+    
+}  
